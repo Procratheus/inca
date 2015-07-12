@@ -10,9 +10,12 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_devise_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit({ roles: [:admin]}, :name) } 
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :roles, :name, :email, :password, :password_confirmation) } 
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :roles, :name, :email, :password, :password_confirmation) } 
   end
 
-  devise_parameter_sanitizer.for(:sign_up) { |u| u.permit({ roles: [] }, :email, :password, :password_confirmation) }
+  def authenticate_admin_user!
+    redirect_to root_path, alert: "This resource is rectricted to Admin users!" unless current_user.roles
+  end
 
 end
