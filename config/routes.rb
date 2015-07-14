@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
+  get 'users/show'
+
+  get 'users/destroy'
+
   devise_for :users 
   devise_scope :user do
     authenticated :user do
