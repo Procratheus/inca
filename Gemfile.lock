@@ -36,6 +36,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    adminlte-generators (0.2.4)
+      railties (>= 3.1.0)
     arel (6.0.1)
     bcrypt (3.1.10)
     better_errors (2.1.1)
@@ -204,6 +206,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  adminlte-generators (~> 0.2.4)
   better_errors (~> 2.1.1)
   byebug
   capybara (~> 2.4.4)

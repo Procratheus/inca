@@ -14,6 +14,7 @@ gem 'devise', '~> 3.5.1'
 gem 'faker', '~> 1.4.3'
 gem 'figaro', '~> 1.1.1'
 gem 'pundit', '~> 1.0.1'
+gem 'adminlte-generators', '~> 0.2.4'
 
 group :development do
   gem 'better_errors', '~> 2.1.1'
