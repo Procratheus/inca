@@ -15,6 +15,9 @@ gem 'faker', '~> 1.4.3'
 gem 'figaro', '~> 1.1.1'
 gem 'pundit', '~> 1.0.1'
 gem 'adminlte-generators', '~> 0.2.4'
+gem 'will_paginate', '~> 3.0.7'
+gem 'will_paginate-bootstrap', '~> 1.0.1'
+gem 'devise_invitable', '~> 1.4.2'
 
 group :development do
   gem 'better_errors', '~> 2.1.1'

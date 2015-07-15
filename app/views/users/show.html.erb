@@ -1,9 +1,57 @@
-<% content_for :content_header  do %>
-  <section class="content-header">
-    <h1>Users <small>#show</small></h1>
-  </section>
-<% end %>
+<section class="content-header">
+  <h1> User: <small><%= @user.name %></small></h1>
 
-<section class="content invoice">
-  <p>Find me in app/views/users/show.html.erb</p>
+  <ol class="breadcrumb">
+    <li>
+        <%= link_to authenticated_root_path do %>
+          <i class="fa fa-dashboard"></i>
+        <% end %>
+    </li>
+    <li><%= link_to "Users", users_path %></li>
+    <li class="active">Show</li>
+  </ol>
+</section>
+
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <%= link_to user_path, class: "btn btn-warning", method: :delete, data: { confirm: "Are you sure?" } do %>
+              <span class="glyphicon glyphicon-remove"></span>
+              Delete
+            <% end %>          
+          </div>
+          <div class="box-tools pull-right">
+            <%= link_to edit_user_path, class: "btn btn-primary" do %>
+              <span class="glyphicon glyphicon-pencil"></span>
+              Edit
+            <% end %>          
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+              <dt>ID:</dt> 
+                <dd><%= @user.attributes["id"] %></dd>
+              <dt>Email:</dt> 
+                <dd><%= @user.attributes["email"] %></dd>
+              <dt>Confirmed:</dt> 
+                <dd>
+                    <% if @user.attributes["confirmed_at"] %>
+                      Yes 
+                    <% else %>
+                      No 
+                    <% end %>
+                </dd>
+              <dt>Last Login:</dt> 
+                <dd><%= @user.attributes["last_sign_in_at"] %></dd>
+              <dt>Admin user?:</dt> 
+                <dd><%= @user.attributes["roles"].to_s.capitalize %></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

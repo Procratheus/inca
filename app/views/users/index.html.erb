@@ -1,9 +1,61 @@
-<% content_for :content_header  do %>
-  <section class="content-header">
-    <h1>Users <small>#index</small></h1>
-  </section>
-<% end %>
+<section class="content-header">
+  <h1>Listing: <small>Users</small></h1>
 
-<section class="content invoice">
-  <p>Find me in app/views/users/index.html.erb</p>
+  <ol class="breadcrumb">
+    <li>
+      <%= link_to authenticated_root_path do %>
+        <i class="fa fa-dashboard"></i> 
+        Home
+      <% end %>
+    </li>
+    <li class="active">Users</li>
+  </ol>    
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <%= link_to new_user_invitation_path, class: 'btn btn-success' do %>
+              <span class="glyphicon glyphicon-plus"></span>
+              New user
+            <% end %>          
+          </div>
+        </div>
+        <div class="box-body table-responsive">
+          <table class="table table-bordered table-hover dataTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Created at</th>
+                <th>Last Login</th>
+                <th>Confirmed_at</th>
+                <th>Admin?</th>
+                <th class="th-col-span" colspan="3">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.created_at %></td>
+                  <td><%= user.last_sign_in_at %></td>
+                  <td><%= user.confirmed_at %></td>
+                  <td><%= user.roles %></td>
+                  <td><%= link_to "Show", user %></td>
+                  <td><%= link_to "Edit", edit_user_path(user) %></td>
+                  <td><%= link_to "Delete", user_path(user), method: :delete, data: { confirm: "Are you sure?" } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+          <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
