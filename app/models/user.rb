@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :invitable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  validates :name, :email, :password, presence: true
+  validates :email, uniqueness: true
   protected
 
   def admin?
