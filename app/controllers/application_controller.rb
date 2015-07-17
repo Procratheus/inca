@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   def configure_devise_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :roles, :name, :email, :password, :password_confirmation) } 
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :roles, :name, :email, :password, :password_confirmation, :current_password) } 
-    devise_parameter_sanitizer.for(:accept_invitation) { |u| u.permit( :name, :password, :password_confirmation) } 
+    devise_parameter_sanitizer.for(:accept_invitation) { |u| u.permit( :name, :password, :password_confirmation, :invitation_token) } 
   end
 
   def authenticate_admin_user!
