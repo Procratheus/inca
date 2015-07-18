@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:index]
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 10)
+    @users = User.all
   end
 
   def show

@@ -11,7 +11,8 @@ User.delete_all
     password: Faker::Internet.password(10, 20),
     roles: false
     )
-  standard_user.save
+  standard_user.skip_confirmation!
+  standard_user.save!
 end
 
 # Create admin users
@@ -22,7 +23,19 @@ end
     password: Faker::Internet.password(10, 20),
     roles: true
     )
-  admin_user.save
+  admin_user.skip_confirmation!
+  admin_user.save!
+end
+
+1.times do 
+  super_user = User.new(
+    name: "Alex Lewis",
+    email: "alex.lewis79@yahoo.co.uk",
+    password: "Ecthelion21",
+    roles: true
+    )
+  admin_user.skip_confirmation!
+  admin_user.save!
 end
 
 users = User.all

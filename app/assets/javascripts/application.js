@@ -16,3 +16,22 @@
 //= require bootstrap
 //= require adminlte
 //= require_tree .
+
+$(document).ready(function(){
+  // Datatable for the users
+  var user_table = $("#user_table").DataTable({
+    stateSave: true,
+    scrollX: true,
+    scrollY: "300px",
+    scrollCollapse: true,
+    paging: true,
+    columnDefs: [
+      { width: "7%", targets: [5,6,7,8]},
+      { orderable: false, targets: [6,7,8]}
+    ],
+    // Disable the ordering on user action buttons in the user table and fix the width
+  });
+  new $.fn.dataTable.FixedColumns( user_table );
+});
+
+

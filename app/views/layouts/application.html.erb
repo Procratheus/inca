@@ -15,9 +15,13 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "//cdn.datatables.net/1.10.7/js/jquery.dataTables.js" %>
+  <%= stylesheet_link_tag "//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" %>
+  <%= javascript_include_tag "//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js" %>
+
   <%= csrf_meta_tags %>
 </head>
-<body class="skin-blue">
+<body class="skin-blue" >
 
     <% if current_user %>
       <%= render "layouts/application_header" %>
@@ -44,10 +48,6 @@
         <%= yield %>
       </aside>
     </div>
-
-    <div class="spinner no-print hidden">
-      <img src="/img/ajax-loader.gif" alt="">
-    </div> 
 
 </body>
 </html>
