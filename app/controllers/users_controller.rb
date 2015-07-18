@@ -16,11 +16,12 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      @user.admin_invite
       flash[:success] = "User was successfully updated"
       redirect_to @user
     else
       flash[:error] = "There was an error updated this user. Please try again!"
-      redirect_to @user
+      render :edit
     end
   end
 

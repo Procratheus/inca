@@ -1,3 +1,17 @@
+<section class="content-header">
+  <h1> User: <small><%= @user.name %></small></h1>
+
+  <ol class="breadcrumb">
+    <li>
+        <%= link_to authenticated_root_path do %>
+          <i class="fa fa-dashboard"></i>
+        <% end %>
+    </li>
+    <li><%= link_to "Users", users_path %></li>
+    <li class="active"><%= @user.name %></li>
+  </ol>
+</section>
+
 <section class="content invoice">
   <div class="row">
     <div class="col-md-10">
@@ -22,6 +36,7 @@
           <%= f.submit class: "btn btn-primary" %>
         </div>
       <% end %>
+      <%= link_to "back", :back %>
     </div>
   </div>
 </section> 

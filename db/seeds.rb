@@ -9,6 +9,9 @@ User.delete_all
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(10, 20),
+    confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
+    last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
+    invitation_limit: 0,
     roles: false
     )
   standard_user.skip_confirmation!
@@ -21,6 +24,9 @@ end
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: Faker::Internet.password(10, 20),
+    confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
+    last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
+    invitation_limit: nil,
     roles: true
     )
   admin_user.skip_confirmation!
@@ -32,10 +38,13 @@ end
     name: "Alex Lewis",
     email: "alex.lewis79@yahoo.co.uk",
     password: "Ecthelion21",
+    confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
+    last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
+    invitation_limit: nil,
     roles: true
     )
-  admin_user.skip_confirmation!
-  admin_user.save!
+  super_user.skip_confirmation!
+  super_user.save!
 end
 
 users = User.all
@@ -44,9 +53,9 @@ standard_users = User.where(roles: false)
 
 
 # Print out seeded data
-puts "#{users.count} seeded in development"
-puts "#{admin_users} seeded in development"
-puts "#{standard_users} seeded in development"
+puts "#{users.count} users seeded in development"
+puts "#{admin_users.count} admin users seeded in development"
+puts "#{standard_users.count} seeded users in development"
 
 
 

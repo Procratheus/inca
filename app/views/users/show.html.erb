@@ -12,7 +12,6 @@
   </ol>
 </section>
 
-
 <section class="content">
   <div class="row">
     <div class="col-md-12">
@@ -49,6 +48,7 @@
                 <dd><%= @user.attributes["last_sign_in_at"] %></dd>
               <dt>Admin user?:</dt> 
                 <dd><%= @user.attributes["roles"].to_s.capitalize %></dd>
+              <%= link_to "back", :back %>
           </dl>
         </div>
       </div>

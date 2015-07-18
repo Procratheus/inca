@@ -12,12 +12,16 @@
   <!--[if lt IE 9]>
     <%= javascript_include_tag "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js", "https://oss.maxcdn.com/respond/1.4.2/respond.min.js" %>
   <![endif]-->
-
+  
+  <%= stylesheet_link_tag "//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" %>
+  <%= stylesheet_link_tag  "//cdn.datatables.net/fixedcolumns/3.0.4/css/dataTables.fixedColumns.css"%>
+  <%= stylesheet_link_tag "//cdn.datatables.net/fixedheader/2.1.2/css/dataTables.fixedHeader.css" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag "//cdn.datatables.net/1.10.7/js/jquery.dataTables.js" %>
-  <%= stylesheet_link_tag "//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.css" %>
+  <%= javascript_include_tag "//cdn.datatables.net/fixedcolumns/3.0.4/js/dataTables.fixedColumns.min.js" %>
   <%= javascript_include_tag "//cdn.datatables.net/plug-ins/1.10.7/integration/bootstrap/3/dataTables.bootstrap.js" %>
+  <%= javascript_include_tag "//cdn.datatables.net/fixedheader/2.1.2/js/dataTables.fixedHeader.min.js" %>  
 
   <%= csrf_meta_tags %>
 </head>
