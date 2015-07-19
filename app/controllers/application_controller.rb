@@ -2,6 +2,13 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  # Pundit
+  include Pundit
+  after_action :verfiy_authorized, unless: :devise_controller?
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+
+  # Devise methods
   before_action :authenticate_user!
   before_action :configure_devise_parameters, if: :devise_controller?
 
@@ -17,4 +24,8 @@ class ApplicationController < ActionController::Base
     redirect_to authenticated_root_path, alert: "This resource is restricted to Admin users!" unless current_user.roles
   end
 
+  def user_not_authorized
+    flash[:alert] = "You are not authorized to perform this action."
+    redirect_to(request.referrer || authenticated_root_path)
+  end
 end
