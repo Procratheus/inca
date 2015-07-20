@@ -18,15 +18,19 @@
       <div class="box box-primary">
         <div class="box-header">
           <div class="box-tools pull-right">
-            <%= link_to user_path, class: "btn btn-warning", method: :delete, data: { confirm: "Are you sure?" } do %>
-              <span class="glyphicon glyphicon-remove"></span>
-              Delete
-            <% end %>          
+            <% if policy(@user).destroy? %>
+              <%= link_to user_path, class: "btn btn-warning", method: :delete, data: { confirm: "Are you sure?" } do %>
+                <span class="glyphicon glyphicon-remove"></span>
+                Delete
+              <% end %>   
+            <% end %>       
           </div>
           <div class="box-tools pull-right">
-            <%= link_to edit_user_path, class: "btn btn-primary" do %>
-              <span class="glyphicon glyphicon-pencil"></span>
-              Edit
+            <% if policy(@user).edit? %>
+              <%= link_to edit_user_path, class: "btn btn-primary" do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                Edit
+              <% end %>
             <% end %>          
           </div>
         </div>
