@@ -27,9 +27,9 @@ $(document).ready(function(){
     scrollCollapse: true,
     paging: true,
     columnDefs: [
-      { width: "17%", targets: [0,1,2,3,4]},
-      { width: "5%", targets: 5},
-      { width: "3.33%", targets: [6,7,8]},
+      { width: "16%", targets: [0,1,2,3,4]},
+      { width: "4%", targets: 5},
+      { width: "4%", targets: [6,7,8]},
       // Disable the ordering on user action buttons in the user table and fix the width
       { orderable: false, targets: [6,7,8]}
     ],

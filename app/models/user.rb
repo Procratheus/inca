@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :invitable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  # Refile method
+  attachment :profile_image
+
+  # Custom validations
   validates :name, presence: true
 
   def admin?
