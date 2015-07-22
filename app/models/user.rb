@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Refile method
-  attachment :profile_image
+  attachment :profile_image, type: :image
 
   # Custom validations
   validates :name, presence: true

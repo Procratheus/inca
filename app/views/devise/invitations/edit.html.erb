@@ -47,7 +47,8 @@
                       <span class="input-group-addon">
                         <%= image_tag attachment_url(@user, :profile_image, :fill, 45, 45) %>
                       </span>
-                      <%= f.attachment_field :profile_image %>
+                      <%= f.attachment_field :profile_image, direct: true %>
+                      <div id="file-loading"></div>
                     </div>
                   </div>
                   <div class="form-group">

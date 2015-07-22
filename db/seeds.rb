@@ -35,9 +35,9 @@ end
 
 1.times do 
   super_user = User.new(
-    name: "Alex Lewis",
-    email: "alex.lewis79@yahoo.co.uk",
-    password: "Ecthelion21",
+    name: "Admin User",
+    email: "admin@example.com",
+    password: "adminuser",
     confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     invitation_limit: nil,
