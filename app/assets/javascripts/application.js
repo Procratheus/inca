@@ -17,14 +17,16 @@
 //= require adminlte
 //= require_tree .
 
+// Datables
+
 $(document).ready(function(){
   // Datatable for the users
-  var user_table = $("#user_table").DataTable({
-    stateSave: true,
-    stateDuration: -1,
+  $("#user_table").DataTable({
+    //stateSave: true,
+    //stateDuration: -1,
     //scrollY: "300px",
     //scrollX: true,
-    // scrollCollapse: true,
+    //scrollCollapse: true,
     //paging: true,
     columnDefs: [
       // { width: "16%", targets: [0,1,2,3,4]},
@@ -33,11 +35,12 @@ $(document).ready(function(){
       // Disable the ordering on user action buttons in the user table and fix the width
       { orderable: false, targets: [6,7,8]}
     ],
-    
   });
-  new $.fn.dataTable.FixedHeader(user_table);
+});
 
-  // Refile javascript for uploading files
+// Refile javascript for uploading files
+
+$(document).ready(function(){
 
   // Start uploading the image
   $(document).on("upload:start", "form", function(e){
@@ -48,14 +51,15 @@ $(document).ready(function(){
   $(document).on("upload:progress", "form", function(e){
     var detail = e.originalEvent.detail;
     var percentComplete = Math.round(detail.loaded / detail.total * 100);
-    $("#file-loading").text("#{percentComplete}% uploaded");
+    $("#file-loading").text(percentComplete + "% uploaded");
   });
 
   // Upload complete
-  $(document).on("upload:complete", "form", function(e){
-    var file_id = $("#user_profile_image").val();
+  $(document).on("upload:success", "form", function(e){
+    var json_id = $("input[name='user[profile_image]'").val();
+    var file_id = JSON.parse(json_id).id;
     $("#file-loading").html($("<img />").attr({
-      src: "/attachments/cache/fill/45/45/#{file_id}/image"
+      src: "/attachments/cache/fill/45/45/" + file_id + "/image"
     }));
   });
 

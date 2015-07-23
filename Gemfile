@@ -20,6 +20,7 @@ gem 'will_paginate', '~> 3.0.7'
 gem 'will_paginate-bootstrap', '~> 1.0.1'
 gem "mini_magick"
 gem "refile", require: ["refile/rails", "refile/image_processing"]
+gem 'aws-sdk', '~> 2.1.7'
 
 group :development do
   gem 'better_errors', '~> 2.1.1'

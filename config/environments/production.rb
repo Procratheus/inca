@@ -79,4 +79,5 @@ Rails.application.configure do
 
   # https://powerful-savannah-9523.herokuapp.com/
   config.action_mailer.default_url_options = { host: "powerful-savannah-9523.herokuapp.com"}
+
 end
