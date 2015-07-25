@@ -28,6 +28,7 @@ module Inca
       Devise::SessionsController.layout "devise"
       Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "devise" }
       Devise::PasswordsController.layout "devise"
+      Devise::InvitationsController.layout "application"
     end
   end
 end

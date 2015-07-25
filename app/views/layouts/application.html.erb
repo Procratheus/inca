@@ -4,32 +4,24 @@
   <%= render "partials/head" %>
 </head>
 <body class="skin-blue" >
-
-    <% if current_user %>
-      <%= render "layouts/application_header" %>
-    <% end %>
-
-    <div class="wrapper row-offcanvas row-offcanvas-left">
-      <% if current_user %>
-        <aside class="left-side sidebar-offcanvas">
-          <%= render "layouts/application_sidebar" %>
-        </aside>
+  <%= render "partials/application_header" %>
+  <div class="wrapper row-offcanvas row-offcanvas-left">
+    <aside class="left-side sidebar-offcanvas">
+      <%= render "partials/application_sidebar" %>
+    </aside>
+    <aside class="right-side">
+      <%= yield(:content_header) %>
+      <% flash.each do |name, msg| %>
+        <div class="pad margin no-print">
+          <%= content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", :role => "alert" do %>
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+            <%= msg %>
+          <% end %>
+        </div>
       <% end %>
-      <aside class="right-side">
-        <%= yield(:content_header) %>
-
-        <% flash.each do |name, msg| %>
-          <div class="pad margin no-print">
-            <%= content_tag :div, :class => "alert alert-#{ name == :error ? "danger" : "success" } alert-dismissable", :role => "alert" do %>
-              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
-              <%= msg %>
-            <% end %>
-          </div>
-        <% end %>
-
-        <%= yield %>
-      </aside>
-    </div>
-
+      <%= yield %>
+      <%= render "partials/application_footer" %>
+    </aside>
+  </div>
 </body>
 </html>
