@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150725160242) do
+ActiveRecord::Schema.define(version: 20150725160931) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,24 @@ ActiveRecord::Schema.define(version: 20150725160242) do
     t.integer  "publisher_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "kortext_id"
+    t.string   "e_isbn"
+    t.string   "p_isbn"
+    t.string   "type"
+    t.string   "format"
+    t.string   "title"
+    t.string   "author"
+    t.string   "language"
+    t.integer  "pages"
+    t.string   "description"
+    t.string   "imprint"
+    t.string   "pub_date"
+    t.string   "price_gbp"
+    t.string   "price_usd"
+    t.string   "price_eur"
+    t.string   "bic"
+    t.string   "bisac"
+    t.string   "image"
   end
 
   add_index "contents", ["publisher_id"], name: "index_contents_on_publisher_id", using: :btree
