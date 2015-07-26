@@ -28,6 +28,7 @@ group :development do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'pry-rails', '~> 0.3.4'
 end
 
 group :test do

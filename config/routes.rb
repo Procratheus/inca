@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
+  resources :publishers do 
+    resources :contents
+  end
+
+  
 end
