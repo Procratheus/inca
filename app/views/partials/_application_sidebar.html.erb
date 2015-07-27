@@ -23,11 +23,16 @@
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
     <%= nav_link edit_user_registration_path do %>
-      <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+      <i class="fa fa-dashboard"></i><span>Dashboard</span>
     <% end %>
     <% if current_user.roles %>
       <%= nav_link users_path do %>
-        <i class="fa fa-users"></i> <span>User listing</span>
+        <i class="fa fa-users"></i><span>User listing</span>
+      <% end %>
+    <% end %>
+    <% if policy(Publisher.all).index? %>
+      <%= nav_link publishers_path do %>
+        <i class="fa fa-book"></i><span>Publisher listing</span>
       <% end %>
     <% end %>
     <%= treeview_link 'Lots of links here' do %>

@@ -5,7 +5,7 @@ class PublisherPolicy < ApplicationPolicy
   end
 
   def show?
-    index?
+    user.present?
   end
 
   def new?
@@ -13,7 +13,7 @@ class PublisherPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    user.present?
   end
 
   def edit
@@ -21,7 +21,7 @@ class PublisherPolicy < ApplicationPolicy
   end
 
   def update?
-    edit?
+    user.present?
   end
 
   def destroy?

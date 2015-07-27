@@ -62,7 +62,11 @@ body {
   height: 60px;
 }
 
-
+.text-area {
+  max-width: 721.328px;
+  max-height: 200px;
+  margin-right: 0px;
+}
 
 
 

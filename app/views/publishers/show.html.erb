@@ -1,0 +1,53 @@
+<section class="content-header">
+  <h1> Publisher: <small><%= @publisher.name %></small></h1>
+
+  <ol class="breadcrumb">
+    <li>
+        <%= link_to authenticated_root_path do %>
+          <i class="fa fa-dashboard"></i>
+        <% end %>
+    </li>
+    <li><%= link_to "publishers", publishers_path %></li>
+    <li class="active">Show</li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="box-tools pull-right">
+            <% if policy(@publisher).destroy? %>
+              <%= link_to publisher_path, class: "btn btn-warning", method: :delete, data: { confirm: "Are you sure?" } do %>
+                <span class="glyphicon glyphicon-remove"></span>
+                Delete
+              <% end %>   
+            <% end %>       
+          </div>
+          <div class="box-tools pull-right">
+            <% if policy(@publisher).edit? %>
+              <%= link_to edit_publisher_path, class: "btn btn-primary" do %>
+                <span class="glyphicon glyphicon-pencil"></span>
+                Edit
+              <% end %>
+            <% end %>          
+          </div>
+        </div>
+        <div class="box-body">
+          <dl class="dl-horizontal">
+              <dt>ID:</dt> 
+                <dd><%= @publisher.attributes["id"] %></dd>
+              <dt>Address:</dt> 
+                <dd><%= @publisher.attributes["address"] %></dd>
+              <dt>Contract start date:</dt> 
+                <dd><%= @publisher.attributes["contract_start_date"] %></dd>
+              <dt>Contract end date:</dt> 
+                <dd><%= @publisher.attributes["contract_end_date"] %></dd>
+              <%= link_to "back", :back %>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
