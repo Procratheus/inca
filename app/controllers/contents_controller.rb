@@ -54,7 +54,7 @@ class ContentsController < ApplicationController
 
     if @content.destroy
       flash[:success] = "The content was successfully destroyed."
-      render :index
+      redirect_to publisher_contents_path
     else
       flash[:error] = "There was a problem destroying the content. Please try again."
       render :show
