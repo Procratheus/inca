@@ -16,4 +16,13 @@ Rails.application.routes.draw do
     resources :contents
   end
 
+  namespace :api do
+    resources :inventory_import, only: [] do 
+      member do
+        patch "import_all"
+        patch "import_delta"
+      end
+    end
+  end
+
 end
