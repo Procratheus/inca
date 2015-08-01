@@ -20,7 +20,7 @@ class Content < ActiveRecord::Base
   end
 
   def self.parse_hash
-    #lastUpdateTime = DateTime.now.iso8601(0) - 1
+    lastUpdateTime = DateTime.now.iso8601(0) - 1
     username = ENV["KORTEXT_USERNAME"]
     password = ENV["KORTEXT_PASSWORD"]
     api = ENV["API_URL"]
@@ -28,11 +28,11 @@ class Content < ActiveRecord::Base
     response = client.call(:get_inventory, message: { "ser:username": "#{username}", "ser:password": "#{password}"})
     xml_response = Nokogiri::XML(response.body[:get_inventory_response][:get_inventory_result])
     xml_response.root.xpath("//product").each do |product| 
-      where(kortext_id: product.at_xpath("a001").text.scan(/\d/).join.to_i).first_or_create do |content|
-        content.kortext_id = product.at_xpath("a001").text.scan(/\d/).join.to_i
-        content[:e_isbn] = product.at_css("b244").text
+      where(kortext_id: product.at_css("a001").text.scan(/\d/).join.to_i).create do |content|
+        content.kortext_id = product.at_css("a001").text.scan(/\d/).join.to_i
+        content.e_isbn = product.at_css("b244").text
         content.p_isbn = product.at_css("relatedproduct b244").text
-        #content.type = product.at_css("b012").text
+        content.type = product.at_css("b012").text
         content.format = product.at_css("b333").text
         content.author = product.at_css("b036").text
         content.language = product.at_css("b252").text
@@ -43,11 +43,11 @@ class Content < ActiveRecord::Base
         content.price_gbp = product.at_css("j151").text
         content.price_usd = product.at_css("j151").text
         content.price_eur = product.at_css("j151").text
-        #content.bic = product.at_css("b069").text == nil ? "Non Available" : product.at_css("b069").text
-        #content.bisac = product.at_css("b069").text == nil ? "Non Available" : product.at_css("b069").text
+        content.bic = product.at_css("b069").text == nil ? "Non Available" : product.at_css("b069").text
+        content.bisac = product.at_css("b069").text == nil ? "Non Available" : product.at_css("b069").text
         content.availability = product.at_css("j396").text.to_i
         content.edition = product.at_css("b057").text       
-        #content.publisher = product.at_css("b081").text
+        content.publisher = product.at_css("b081").text
       end
     end
   end
