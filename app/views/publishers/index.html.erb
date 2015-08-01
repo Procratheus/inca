@@ -23,6 +23,7 @@
               New Publisher
             <% end %>          
           </div>
+          <%= link_to "Import Inventory", import_all_api_inventory_imports_path, method: :put %>
         </div>
         <div class="box-body table-responsive">
           <table class="table table-striped table-hover table-condensed dataTable" id="publisher_table">

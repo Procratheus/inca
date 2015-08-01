@@ -17,10 +17,10 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :inventory_import, only: [] do 
-      member do
-        patch "import_all"
-        patch "import_delta"
+    resources :inventory_imports, only: [] do 
+      collection do
+        put "import_all"
+        put "import_delta"
       end
     end
   end

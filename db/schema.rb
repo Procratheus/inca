@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730225305) do
+ActiveRecord::Schema.define(version: 20150801004229) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "contents", force: :cascade do |t|
     t.integer  "publisher_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.integer  "kortext_id"
     t.string   "e_isbn"
     t.string   "p_isbn"
-    t.string   "type"
+    t.string   "type_name"
     t.string   "format"
     t.string   "title"
     t.string   "author"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20150730225305) do
     t.string   "image"
     t.integer  "availability"
     t.string   "edition"
-    t.string   "publisher"
+    t.string   "publisher_name"
   end
 
   add_index "contents", ["publisher_id"], name: "index_contents_on_publisher_id", using: :btree
