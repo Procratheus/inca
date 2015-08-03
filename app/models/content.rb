@@ -72,10 +72,9 @@ class Content < ActiveRecord::Base
   end
 
   def get_image
-    api = ENV["API_IMAGE_URL"]
+    api = ENV['API_IMAGE_URL']
     image_width = 200
-    image_url = api + "id={self.kortext_id}" + "&" + "width={image_width}"
-    self.update(content_image: StringIO.new(image_url))
+    self.update(content_image: "#{api}id=#{self.kortext_id}&width=#{image_width}")
   end
 
 end
