@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801004229) do
+ActiveRecord::Schema.define(version: 20150802233131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,10 +37,11 @@ ActiveRecord::Schema.define(version: 20150801004229) do
     t.string   "price_eur"
     t.string   "bic"
     t.string   "bisac"
-    t.string   "image"
+    t.string   "content_image"
     t.integer  "availability"
     t.string   "edition"
     t.string   "publisher_name"
+    t.string   "vat"
   end
 
   add_index "contents", ["publisher_id"], name: "index_contents_on_publisher_id", using: :btree

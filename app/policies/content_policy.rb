@@ -28,6 +28,14 @@ class ContentPolicy < ApplicationPolicy
     user.present? && user.roles?
   end
 
+  def import_all?
+    destroy?
+  end
+
+  def import_delta?
+    destroy?
+  end
+
   class Scope < Scope
     def resolve
       scope
