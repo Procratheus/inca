@@ -32,7 +32,12 @@
     <% end %>
     <% if policy(Publisher.all).index? %>
       <%= nav_link publishers_path do %>
-        <i class="fa fa-book"></i><span>Publisher listing</span>
+        <i class="glyphicon glyphicon-briefcase"></i><span>Publisher listing</span>
+      <% end %>
+    <% end %>
+    <% if policy(Content.all).index? %>
+      <%= nav_link contents_path do %>
+        <i class="fa fa-book"></i><span>Content Listing</span>
       <% end %>
     <% end %>
     <%= treeview_link 'Lots of links here' do %>

@@ -22,7 +22,7 @@ class ContentsController < ApplicationController
 
     if @content.save
       flash[:success] = "The new content was successfully created."
-      redirect_to [@publisher, @content]
+      redirect_to @content
     else
       flash[:error] = "There was error creating the content. Please try again."
       render :new
@@ -41,7 +41,7 @@ class ContentsController < ApplicationController
 
     if @content.update(content_params)
       flash[:success] = "You have successfully updated the content."
-      redirect_to [@publisher, @content]
+      redirect_to @content
     else
       flash[:error] = "There was a problem updating the content. Please try again"
       render :edit
@@ -54,7 +54,7 @@ class ContentsController < ApplicationController
 
     if @content.destroy
       flash[:success] = "The content was successfully destroyed."
-      redirect_to publisher_contents_path
+      redirect_to contents_path
     else
       flash[:error] = "There was a problem destroying the content. Please try again."
       render :show
@@ -64,7 +64,8 @@ class ContentsController < ApplicationController
   protected
 
   def content_params
-    params.require(:content).permit(:kortext_id, :e_isbn, :p_isbn, :type, :format, :title, :author, :language,
-    :pages, :description, :imprint, :pubdate, :price_gbp, :price_usd, :price_eur, :bic, :bisac, :image, :availabilty)
+    params.require(:content).permit(:kortext_id, :e_isbn, :p_isbn, :type_name, :format, :title, :author, :language,
+    :pages, :description, :imprint, :pub_date, :price_gbp, :price_usd, :price_eur, :bic, :bisac, :content_image, :availabilty,
+     :edition, :publisher_name, :vat)
   end
 end

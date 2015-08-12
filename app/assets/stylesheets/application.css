@@ -68,6 +68,9 @@ body {
   margin-right: 0px;
 }
 
+.alert-dismissable {
+  margin: 5px 5px 5px 5px;
+}
 
 
 

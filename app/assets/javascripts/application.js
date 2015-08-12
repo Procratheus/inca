@@ -34,6 +34,14 @@ $(document).ready(function(){
       { orderable: false, targets: [4,5,6]}
     ] 
   });
+  // Datatable for contents
+  $("#content_table").DataTable({
+    columnDefs: [
+      // Disable the ordering on action buttons in the table
+      { orderable: false, targets: [8,9,10]}
+    ]
+
+  })
 });
 
 // Refile javascript for uploading files

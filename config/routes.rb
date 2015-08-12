@@ -12,12 +12,12 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
-  resources :publishers do 
-    resources :contents
-  end
+  resources :publishers
+
+  resources :contents
 
   namespace :api do
-    resources :inventory_imports, only: [] do 
+    resources :inventory_imports do 
       collection do
         put "import_all"
         put "import_delta"

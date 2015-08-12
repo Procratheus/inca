@@ -5,7 +5,7 @@ class ContentPolicy < ApplicationPolicy
   end
 
   def show?
-    index?
+    user.present?
   end
 
   def new?
@@ -13,7 +13,7 @@ class ContentPolicy < ApplicationPolicy
   end
 
   def create?
-    new?
+    user.present?
   end
 
   def edit
@@ -21,7 +21,7 @@ class ContentPolicy < ApplicationPolicy
   end
 
   def update?
-    edit?
+    user.present?
   end
 
   def destroy?
@@ -29,11 +29,11 @@ class ContentPolicy < ApplicationPolicy
   end
 
   def import_all?
-    destroy?
+    user.present? && user.roles?
   end
 
   def import_delta?
-    destroy?
+    user.present? && user.roles?
   end
 
   class Scope < Scope
