@@ -2,7 +2,7 @@ class Content < ActiveRecord::Base
   belongs_to :publisher
 
   # Refile method
-  attachment :content_image, type: :image
+  #attachment :content_image, type: :image
 
   def get_image
     api = ENV['API_IMAGE_URL']

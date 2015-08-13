@@ -35,6 +35,7 @@
             <thead>
               <tr>
                 <th>Publisher</th>
+                <th>Content Image</th>
                 <th>Title</th>
                 <th>Author</th>
                 <th>e-isbn</th>
@@ -47,37 +48,40 @@
             </thead>
             <tbody>
               <% @contents.each do |content| %>
-                <tr>
-                  <td><%= content.publisher_name %></td> 
-                  <td><%= content.title %></td>
-                  <td><%= content.author %></td>
-                  <td><%= content.e_isbn %></td>
-                  <td><%= content.availability %></td>
-                  <td><%= content.price_gbp %></td>
-                  <td><%= content.price_eur %></td>
-                  <td><%= content.price_usd %></td>
-                  <td class="th-col-span">
-                    <% if policy(content).show? %>
-                      <%= link_to content do %>                      
-                        <i class="fa fa-book"></i>
+                <% cache content do %>
+                  <tr>
+                    <td><%= content.publisher_name %></td>
+                    <td><%= image_tag content.content_image, width: 40, height: 40 %></td> 
+                    <td><%= content.title %></td>
+                    <td><%= content.author %></td>
+                    <td><%= content.e_isbn %></td>
+                    <td><%= content.availability %></td>
+                    <td><%= content.price_gbp %></td>
+                    <td><%= content.price_eur %></td>
+                    <td><%= content.price_usd %></td>
+                    <td class="th-col-span">
+                      <% if policy(content).show? %>
+                        <%= link_to content do %>                      
+                          <i class="fa fa-book"></i>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </td>
-                  <td class="th-col-span">
-                    <% if policy(content).edit? %>
-                      <%= link_to edit_content_path(content) do %>
-                        <i class="glyphicon glyphicon-pencil"></i>
+                    </td>
+                    <td class="th-col-span">
+                      <% if policy(content).edit? %>
+                        <%= link_to edit_content_path(content) do %>
+                          <i class="glyphicon glyphicon-pencil"></i>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </td>
-                  <td class="th-col-span">
-                    <% if policy(content).destroy? %>
-                      <%= link_to content_path(content), method: :delete, data: { confirm: "Are you sure?" } do %>
-                        <i class="glyphicon glyphicon-remove"></i>
+                    </td>
+                    <td class="th-col-span">
+                      <% if policy(content).destroy? %>
+                        <%= link_to content_path(content), method: :delete, data: { confirm: "Are you sure?" } do %>
+                          <i class="glyphicon glyphicon-remove"></i>
+                        <% end %>
                       <% end %>
-                    <% end %>
-                  </td>
-                </tr>
+                    </td>
+                  </tr>
+                <% end %>
               <% end %>
             </tbody>
           </table>

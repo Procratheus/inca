@@ -36,6 +36,10 @@ class ContentPolicy < ApplicationPolicy
     user.present? && user.roles?
   end
 
+  def import_image_all?
+    user.present? && user.roles?
+  end
+
   class Scope < Scope
     def resolve
       scope

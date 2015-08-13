@@ -3,6 +3,7 @@ class Api::InventoryImportsController < ApiController
   def import_all
     Content.transaction do 
       @bulk_contents = ImportInventory.call
+      authorize @bulk_contents
     end
 
     if @bulk_contents
@@ -17,6 +18,7 @@ class Api::InventoryImportsController < ApiController
   def import_delta
     Content.transaction do
       @delta_contents = ImportInventoryDelta.call
+      authorize @delta_contents
     end
 
     if @delta_contents
@@ -31,6 +33,7 @@ class Api::InventoryImportsController < ApiController
   def import_image_all
     Content.transaction do
       @contents = Content.all
+      authorize @contents
       @contents.each do |content| 
         content.get_image  
       end

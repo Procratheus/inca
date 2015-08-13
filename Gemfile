@@ -23,6 +23,7 @@ gem "mini_magick"
 gem 'aws-sdk', '~> 1.63.0'
 gem 'savon', '~> 2.11.1'
 gem 'nokogiri', '~> 1.6.6.2'
+gem 'rubocop', '~> 0.33.0'
 
 group :development do
   gem 'better_errors', '~> 2.1.1'
@@ -42,4 +43,3 @@ end
 group :production do
   gem 'rails_12factor', '~> 0.0.3'
 end
-

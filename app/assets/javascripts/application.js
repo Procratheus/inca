@@ -38,7 +38,7 @@ $(document).ready(function(){
   $("#content_table").DataTable({
     columnDefs: [
       // Disable the ordering on action buttons in the table
-      { orderable: false, targets: [8,9,10]}
+      { orderable: false, targets: [9,10,11]}
     ]
 
   })

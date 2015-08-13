@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   def admin_invite
     if admin?
-      self.update(invitation_limit: nil)
+      self.update(invitation_limit: 1000)
     else
       self.update(invitation_limit: 0)
     end
