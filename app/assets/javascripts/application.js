@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/extras/dataTables.responsive
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require refile
 //= require bootstrap
 //= require adminlte
@@ -22,25 +26,64 @@
 $(document).ready(function(){
   // Datatable for the users
   $("#user_table").DataTable({
-    columnDefs: [
+    responsive: true,
+    autoWidth: false,
+    order: [[1,"asc"]],
+    columns: [
       // Disable the ordering on action buttons in the table
-      { orderable: false, targets: [6,7,8]}
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      { orderable: false },
+      { orderable: false },
+      { orderable: false }
     ]
   });
   // Datatable for publishers
   $("#publisher_table").DataTable({
-    columnDefs: [
+    responsive: true,
+    autoWidth: false,
+    order: [[1,"asc"]],
+    columns: [
       // Disable the ordering on action buttons in the table
-      { orderable: false, targets: [4,5,6]}
-    ] 
+      null,
+      null,
+      null,
+      null,
+      { orderable: false },
+      { orderable: false },
+      { orderable: false }
+    ]
   });
   // Datatable for contents
   $("#content_table").DataTable({
-    columnDefs: [
-      // Disable the ordering on action buttons in the table
-      { orderable: false, targets: [9,10,11]}
+    responsive: true,
+    autoWidth: false,
+    order: [[1,"asc"]],
+    processing: true,
+    serverSide: true,
+    columns: [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      { orderable: false },
+      { orderable: false },
+      { orderable: false }
     ]
-
+    ajax: {
+      url: "/contents/datatable_ajax_content",
+      data: function(d) {
+        d.content_search = $("#content_search").val();
+      }
+    },
   })
 });
 
@@ -70,8 +113,3 @@ $(document).ready(function(){
   });
 
 });
-
-
-
-
-

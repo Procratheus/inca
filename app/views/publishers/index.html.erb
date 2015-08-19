@@ -4,12 +4,12 @@
   <ol class="breadcrumb">
     <li>
       <%= link_to authenticated_root_path do %>
-        <i class="fa fa-dashboard"></i> 
+        <i class="fa fa-dashboard"></i>
         Home
       <% end %>
     </li>
     <li class="active">Publishers</li>
-  </ol>    
+  </ol>
 </section>
 
 <section class="content">
@@ -21,7 +21,7 @@
             <%= link_to new_publisher_path, class: 'btn btn-success' do %>
               <span class="glyphicon glyphicon-plus"></span>
               New Publisher
-            <% end %>          
+            <% end %>
           </div>
           <%= link_to "Import Inventory", import_all_api_inventory_imports_path, method: :put %>
           <%= link_to "Import Delta Inventory", import_delta_api_inventory_imports_path, method: :put %>
@@ -31,10 +31,10 @@
           <table class="table table-striped table-bordered table-hover" id="publisher_table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Contract signed</th>
-                <th>Contract End</th>
+                <th class="row-config">Name</th>
+                <th class="row-config">Address</th>
+                <th class="row-config">Contract signed</th>
+                <th class="row-config">Contract End</th>
                 <th class="th-col-span" colspan="3">Actions</th>
               </tr>
             </thead>
@@ -47,7 +47,7 @@
                   <td><%= publisher.contract_end_date %></td>
                   <td class="th-col-span">
                     <% if policy(publisher).show? %>
-                      <%= link_to publisher do %>                      
+                      <%= link_to publisher do %>
                         <i class="glyphicon glyphicon-briefcase"></i>
                       <% end %>
                     <% end %>

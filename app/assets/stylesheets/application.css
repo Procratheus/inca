@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require dataTables/extras/dataTables.responsive
+ *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require_self
  */
 
@@ -72,6 +74,9 @@ body {
   margin: 5px 5px 5px 5px;
 }
 
-
-
-
+.row-config {
+  max-width: 200px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

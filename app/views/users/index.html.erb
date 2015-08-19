@@ -4,12 +4,12 @@
   <ol class="breadcrumb">
     <li>
       <%= link_to authenticated_root_path do %>
-        <i class="fa fa-dashboard"></i> 
+        <i class="fa fa-dashboard"></i>
         Home
       <% end %>
     </li>
     <li class="active">Users</li>
-  </ol>    
+  </ol>
 </section>
 
 <section class="content">
@@ -21,19 +21,19 @@
             <%= link_to new_user_invitation_path, class: 'btn btn-success' do %>
               <span class="glyphicon glyphicon-plus"></span>
               New user
-            <% end %>          
+            <% end %>
           </div>
         </div>
         <div class="box-body">
           <table class="table table-striped table-bordered table-hover" id="user_table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Created at</th>
-                <th>Last Login</th>
-                <th>Confirmed_at</th>
-                <th>Admin?</th>
+                <th class="row-config">Name</th>
+                <th class="row-config">Email</th>
+                <th class="row-config">Created at</th>
+                <th class="row-config">Last Login</th>
+                <th class="row-config">Confirmed_at</th>
+                <th class="row-config">Admin?</th>
                 <th class="th-col-span" colspan="3">Actions</th>
               </tr>
             </thead>
@@ -47,7 +47,7 @@
                   <td><%= user.confirmed_at %></td>
                   <td><%= user.roles %></td>
                   <td class="th-col-span">
-                    <%= link_to user do %>                      
+                    <%= link_to user do %>
                       <i class="glyphicon glyphicon-user"></i>
                     <% end %>
                   </td>

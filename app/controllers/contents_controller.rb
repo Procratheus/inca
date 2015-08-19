@@ -1,8 +1,12 @@
 class ContentsController < ApplicationController
-  
+
   def index
     @contents = Content.all
     authorize @contents
+  end
+
+  def datatable_ajax_content
+    render json: ContentsDatatable.new(view_context)
   end
 
   def show

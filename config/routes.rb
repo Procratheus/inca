@@ -14,14 +14,18 @@ Rails.application.routes.draw do
 
   resources :publishers
 
-  resources :contents
+  resources :contents do
+    collection do
+      get :datatable_ajax_content
+    end
+  end
 
   namespace :api do
-    resources :inventory_imports do 
+    resources :inventory_imports do
       collection do
-        put "import_all"
-        put "import_delta"
-        put "import_image_all"
+        put :import_all
+        put :import_delta
+        put :import_image_all
       end
     end
   end
