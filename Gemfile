@@ -32,6 +32,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry-rails', '~> 0.3.4'
+  gem 'quiet_assets'
 end
 
 group :development, :test do

@@ -151,6 +151,8 @@ GEM
       rack (>= 1.1, < 2.0)
     pundit (1.0.1)
       activesupport (>= 3.0.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -314,6 +316,7 @@ DEPENDENCIES
   pry-rails (~> 0.3.4)
   puma (~> 2.11.3)
   pundit (~> 1.0.1)
+  quiet_assets
   rails (= 4.2.3)
   rails_12factor (~> 0.0.3)
   refile
