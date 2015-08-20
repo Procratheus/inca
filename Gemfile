@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-ruby "2.2.0"
-gem 'rails', '4.2.0'
+ruby "2.2.2"
+
+gem 'rails', '4.2.3'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -33,11 +34,20 @@ group :development do
   gem 'pry-rails', '~> 0.3.4'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'rspec-mocks'
+  gem 'regressor'
+  gem 'shoulda-matchers'
+  gem "factory_girl_rails"
+end
+
 group :test do
-  gem 'rspec-rails', '~> 3.3.2'
-  gem 'capybara', '~> 2.4.4'
-  gem 'database_cleaner', '~> 1.4.1'
-  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'database_cleaner'
+  gem 'simplecov', require: false
+  gem 'formulaic'
 end
 
 group :production do
