@@ -5,10 +5,7 @@ RSpec.describe User, regressor: true do
   # === Relations ===
   it { is_expected.to belong_to :invited_by }
   
-  
-
   # === Nested Attributes ===
-  
 
   # === Database (Columns) ===
   it { is_expected.to have_db_column :id }
