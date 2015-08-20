@@ -26,9 +26,9 @@ class ContentsDatatable
           content.price_gbp,
           content.price_eur,
           content.price_usd,
-          policy(content).show? ? link_to("<i class='fa fa-book'></i>", content_path(content)) : "n/a",
-          policy(content).edit? ? link_to("<i class='glyphicon glyphicon-pencil'></i>", edit_content_path(content)) : "n/a",
-          policy(content).destroy? ? link_to("<i class='glyphicon glyphicon-remove'></i>", content_path(content), method: :delete, data: { confirm: "Are you sure" }) : "n/a"
+          policy(content).show? ? link_to("<i class='fa fa-book'></i>".html_safe, content_path(content)) : "n/a",
+          policy(content).edit? ? link_to("<i class='glyphicon glyphicon-pencil'></i>".html_safe, edit_content_path(content)) : "n/a",
+          policy(content).destroy? ? link_to("<i class='glyphicon glyphicon-remove'></i>".html_safe, content_path(content), method: :delete, data: { confirm: "Are you sure" }) : "n/a"
         ]
       end
     end
