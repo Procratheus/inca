@@ -37,9 +37,9 @@ $(document).ready(function(){
       null,
       null,
       null,
-      { orderable: false },
-      { orderable: false },
-      { orderable: false }
+      { orderable: false, searchable: false },
+      { orderable: false, searchable: false },
+      { orderable: false, searchable: false }
     ]
   });
   // Datatable for publishers
@@ -53,9 +53,9 @@ $(document).ready(function(){
       null,
       null,
       null,
-      { orderable: false },
-      { orderable: false },
-      { orderable: false }
+      { orderable: false, searchable: false },
+      { orderable: false, searchable: false },
+      { orderable: false, searchable: false }
     ]
   });
   // Datatable for contents
@@ -74,16 +74,16 @@ $(document).ready(function(){
       null,
       null,
       null,
-      { orderable: false },
-      { orderable: false },
-      { orderable: false }
-    ]
+      { orderable: false, searchable: false },
+      { orderable: false, searchable: false },
+      { orderable: false, searchable: false }
+    ],
     ajax: {
       url: "/contents/datatable_ajax_content",
       data: function(d) {
         d.content_search = $("#content_search").val();
       }
-    },
+    }
   })
 });
 
