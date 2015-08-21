@@ -19,4 +19,16 @@ describe User do
       expect(confirmed_user).to be_valid
     end
   end
+
+  describe 'admin user' do
+    let(:admin_user) { create(:admin_user) }
+
+    it 'has a valid factory' do
+      expect(admin_user).to be_valid
+    end
+
+    it 'has a role of admin' do
+      expect(admin_user.role).to eql('admin')
+    end
+  end
 end

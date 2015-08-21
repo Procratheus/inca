@@ -12,10 +12,6 @@ class User < ActiveRecord::Base
   # Custom validations
   validates :name, presence: true
 
-  def admin?
-    self.roles == true
-  end
-
   def admin_invite
     if admin?
       self.update(invitation_limit: 1000)
