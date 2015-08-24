@@ -7,11 +7,13 @@ class User < ActiveRecord::Base
   # Refile method
   attachment :profile_image, type: :image
 
+  enum role: { standard: 0, moderator: 1, admin: 2 }
+
   # Custom validations
   validates :name, presence: true
 
   def admin?
-    self.roles == true
+    self.role == "admin"
   end
 
   def admin_invite

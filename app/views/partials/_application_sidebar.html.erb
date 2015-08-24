@@ -25,7 +25,7 @@
     <%= nav_link edit_user_registration_path do %>
       <i class="fa fa-dashboard"></i><span>Dashboard</span>
     <% end %>
-    <% if current_user.roles %>
+    <% if current_user.role == "admin" %>
       <%= nav_link users_path do %>
         <i class="fa fa-users"></i><span>User listing</span>
       <% end %>

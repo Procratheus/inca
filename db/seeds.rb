@@ -1,10 +1,10 @@
 require "faker"
 
-# Delete all records upon each seed 
+# Delete all records upon each seed
 User.delete_all
 
 # Create standard users
-30.times do 
+30.times do
   standard_user = User.new(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -12,14 +12,14 @@ User.delete_all
     confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     invitation_limit: 0,
-    roles: false
+    role: "standard"
     )
   standard_user.skip_confirmation!
   standard_user.save!
 end
 
 # Create admin users
-5.times do 
+5.times do
   admin_user = User.new(
     name: Faker::Name.name,
     email: Faker::Internet.email,
@@ -27,13 +27,13 @@ end
     confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     invitation_limit: nil,
-    roles: true
+    roles: "admin"
     )
   admin_user.skip_confirmation!
   admin_user.save!
 end
 
-1.times do 
+1.times do
   super_user = User.new(
     name: "Admin User",
     email: "admin@example.com",
@@ -56,6 +56,3 @@ standard_users = User.where(roles: false)
 puts "#{users.count} users seeded in development"
 puts "#{admin_users.count} admin users seeded in development"
 puts "#{standard_users.count} seeded users in development"
-
-
-

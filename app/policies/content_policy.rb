@@ -25,19 +25,19 @@ class ContentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? && user.roles?
+    user.present? && user.admin?
   end
 
   def import_all?
-    user.present? && user.roles?
+    user.present? && user.admin?
   end
 
   def import_delta?
-    user.present? && user.roles?
+    user.present? && user.admin?
   end
 
   def import_image_all?
-    user.present? && user.roles?
+    user.present? && user.admin?
   end
 
   class Scope < Scope

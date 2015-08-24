@@ -64,6 +64,8 @@
                       <%= link_to publisher_path(publisher), method: :delete, data: { confirm: "Are you sure?" } do %>
                         <i class="glyphicon glyphicon-remove"></i>
                       <% end %>
+                    <% else %>
+                      "n/a"
                     <% end %>
                   </td>
                 </tr>

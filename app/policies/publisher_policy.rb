@@ -25,7 +25,7 @@ class PublisherPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.present? && user.roles?
+    user.present? && user.admin?
   end
 
   class Scope < Scope

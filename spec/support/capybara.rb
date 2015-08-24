@@ -1,0 +1,6 @@
+Capybara.asset_host = 'http://localhost:3000'
+Capybara.javascript_driver = :webkit
+
+Capybara::Webkit.configure do |config|
+  config.block_unknown_urls
+end

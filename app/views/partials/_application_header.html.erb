@@ -100,7 +100,7 @@
             <li class="user-header bg-light-blue">
               <%= image_tag attachment_url(current_user, :profile_image, :fill, 90, 90) %>
               <p>
-                <%= current_user.name %> - <%= current_user.roles ? "admin user" : "standard user" %>
+                <%= current_user.name %> - <%= current_user.role == "admin" ? "admin user" : "standard user" %>
                 <small>User created @ <%= current_user.created_at %></small>
               </p>
             </li>

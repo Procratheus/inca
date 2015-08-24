@@ -1,5 +1,5 @@
 class UserPolicy < ApplicationPolicy
-  
+
   def index?
     admin?
   end
@@ -29,6 +29,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def admin?
-    user.roles == true    
+    user.admin?    
   end
 end

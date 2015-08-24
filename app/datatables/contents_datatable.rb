@@ -1,4 +1,7 @@
 class ContentsDatatable
+
+  include AvailableContent
+
   delegate :params, :link_to, :policy, :edit_content_path, :content_path, to: :@view
 
   def initialize(view)
@@ -22,7 +25,7 @@ class ContentsDatatable
           content.title,
           content.author,
           content.e_isbn,
-          content.availability,
+          ContentAvailabilty.call(content.availability),
           content.price_gbp,
           content.price_eur,
           content.price_usd,
@@ -44,7 +47,7 @@ class ContentsDatatable
     def fetch_contents
       contents = search.page(page).per_page(per_page)
       if params[:search][:value].present?
-        contents = contents.where("publisher_name like :search or title like :search or author like :search or e_isbn like :search or availability like :search or price_gbp like :search or price_usd like :search or price_eur like :search", search: "%#{params[:search][:value]}%")
+        contents = contents.where("publisher_name ILIKE :search or title ILIKE :search or author ILIKE :search or e_isbn ILIKE :search or availability ILIKE :search or price_gbp ILIKE :search or price_usd ILIKE :search or price_eur ILIKE :search", search: "%#{params[:search][:value]}%")
       end
       contents
     end
@@ -65,4 +68,6 @@ class ContentsDatatable
     def sort_direction
       params[:order][:"0"][:dir] == "asc" ? "asc" : "desc"
     end
+
+
 end

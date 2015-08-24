@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin_user!
-    redirect_to authenticated_root_path, alert: "This resource is restricted to Admin users!" unless current_user.roles
+    redirect_to authenticated_root_path, alert: "This resource is restricted to Admin users!" unless current_user.role == "admin"
   end
 
   def user_not_authorized
