@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150821211722) do
+ActiveRecord::Schema.define(version: 20150825003621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,19 @@ ActiveRecord::Schema.define(version: 20150821211722) do
   end
 
   add_index "contents", ["publisher_id"], name: "index_contents_on_publisher_id", using: :btree
+
+  create_table "histories", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "object_name"
+    t.string   "attribute_name"
+    t.string   "before_value"
+    t.string   "after_value"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "object_id"
+  end
+
+  add_index "histories", ["user_id"], name: "index_histories_on_user_id", using: :btree
 
   create_table "publishers", force: :cascade do |t|
     t.string   "name"
@@ -94,4 +107,5 @@ ActiveRecord::Schema.define(version: 20150821211722) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "contents", "publishers"
+  add_foreign_key "histories", "users"
 end

@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable, :invitable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  # Associations
+  has_many :histories
+
   # Refile method
   attachment :profile_image, type: :image
 
