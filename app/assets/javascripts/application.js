@@ -80,9 +80,6 @@ $(document).ready(function(){
     ],
     ajax: {
       url: "/contents/datatable_ajax_content",
-      data: function(d) {
-        d.content_search = $("#content_search").val();
-      }
     }
   })
 });

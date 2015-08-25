@@ -7,7 +7,7 @@ class PublishersController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def new
@@ -16,7 +16,7 @@ class PublishersController < ApplicationController
   end
 
   def create
-    
+
     @publisher = Publisher.new(pub_params)
     authorize @publisher
     if @publisher.save
@@ -29,12 +29,12 @@ class PublishersController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def update
-    
-    if @publisher.update(pub_params)
+
+    if @publisher.update(pub_params).record_history
       flash[:success] = "The Publisher's details were successfully updated."
       redirect_to @publisher
     else

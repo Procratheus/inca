@@ -36,20 +36,25 @@ class Api::InventoryImportsController < ApiController
   def import_image_all
     Content.transaction do
       @contents = Content.all
-      authorize @contents
       @contents.each do |content|
         ImportImages.call(content)
       end
       @contents.each do |content|
-        image_file = "#{Rails.root.to_s}/public/img/content-images/#{content.kortext_id}.jpg"
-        no_image_file = "#{Rails.root.to_s}/public/img/no-content-available.jpg"
-        source_url = content.content_image
-        file = open(source_url) != nil ? open(source_url) : open(no_image_file)   
+        begin
+          image_file = "#{Rails.root.to_s}/public/img/content-images/#{content.kortext_id}.jpg"
+          no_image_file = "#{Rails.root.to_s}/public/img/no-image-available.jpg"
+          source_url = content.content_image
+          file = open(source_url)
+        rescue OpenURI::HTTPError => e
+          file = open(no_image_file)
+        end
         File.open(image_file, "wb") do |f|
           f.write file.read
         end
       end
     end
+
+    authorize @contents
 
     if @contents
       flash[:success] = "The inventory update was successfull."
@@ -58,8 +63,8 @@ class Api::InventoryImportsController < ApiController
       flash[:error] = "The inventory update failed. Please try again."
       redirect_to publishers_path
     end
-
-
   end
+
+  protected
 
 end

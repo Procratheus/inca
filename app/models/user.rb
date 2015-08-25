@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :invitable,
@@ -15,7 +16,9 @@ class User < ActiveRecord::Base
   # Custom validations
   validates :name, presence: true
 
-  def admin?
+  protected
+
+  def admin
     self.role == "admin"
   end
 
