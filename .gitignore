@@ -19,3 +19,5 @@
 # Ignore application configuration
 /config/application.yml
 
+Ignore the book pages cover
+/public/img/content-images

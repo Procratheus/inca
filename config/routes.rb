@@ -25,7 +25,6 @@ Rails.application.routes.draw do
       collection do
         put :import_all
         put :import_delta
-        put :import_image_all
       end
     end
   end
