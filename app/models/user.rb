@@ -1,5 +1,9 @@
 class User < ActiveRecord::Base
 
+  # Record Changes to Records
+  include RecordHistory
+  before_update :record_history
+
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable, :invitable,

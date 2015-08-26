@@ -1,5 +1,4 @@
 class Api::InventoryImportsController < ApiController
-  require "open-uri"
 
   def import_all
     Content.transaction do
@@ -8,9 +7,7 @@ class Api::InventoryImportsController < ApiController
         ImportImages.call(content)
       end
     end
-
     authorize @bulk_contents
-
     if @bulk_contents
       flash[:success] = "The inventory update was successfull."
       redirect_to publishers_path
@@ -27,9 +24,7 @@ class Api::InventoryImportsController < ApiController
         ImportImages.call(content)
       end
     end
-
     authorize @delta_contents
-
     if @delta_contents
       flash[:success] = "The inventory update was successfull."
       redirect_to publishers_path
