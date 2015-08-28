@@ -1,6 +1,6 @@
-class RegistrationsController < Devise::RegistrationsController 
+class RegistrationsController < Devise::RegistrationsController
 
-  def new 
+  def new
     flash[:info] = "There is no user sign up available for this app, you must be invited by existing user."
     redirect_to new_user_session_path
   end
@@ -8,7 +8,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     flash[:info] = "There is no user sign up available for this app, you must be invited by existing user."
     redirect_to new_user_session_path
-  end 
+  end
 
   def edit
     super

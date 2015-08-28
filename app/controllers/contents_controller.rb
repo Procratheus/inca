@@ -44,6 +44,7 @@ class ContentsController < ApplicationController
     authorize @content
 
     if @content.update(content_params)
+      @content.record_history(current_user)
       flash[:success] = "You have successfully updated the content."
       redirect_to @content
     else

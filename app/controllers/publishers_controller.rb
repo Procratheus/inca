@@ -35,6 +35,7 @@ class PublishersController < ApplicationController
   def update
 
     if @publisher.update(pub_params)
+      @publisher.record_history(current_user)
       flash[:success] = "The Publisher's details were successfully updated."
       redirect_to @publisher
     else

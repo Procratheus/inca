@@ -1,8 +1,6 @@
 class User < ActiveRecord::Base
 
-  # Record Changes to Records
-  include RecordHistory
-  before_update :record_history
+  include ActiveModel::Dirty
 
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable

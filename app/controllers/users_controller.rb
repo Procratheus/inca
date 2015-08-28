@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def edit
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       @user.admin_invite
+      @user.record_history(current_user)
       flash[:success] = "User was successfully updated"
       redirect_to @user
     else

@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  #Record History
+  include RecordHistory
+
   # Pundit
   include Pundit
   after_action :verify_authorized, unless: :devise_controller?, except: :datatable_ajax_content
@@ -28,5 +31,6 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(request.referrer || unauthenticated_root_path)
   end
+
 
 end
