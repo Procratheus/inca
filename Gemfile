@@ -25,6 +25,7 @@ gem 'savon', '~> 2.11.1'
 gem 'nokogiri', '~> 1.6.6.2'
 gem 'rubocop', '~> 0.33.0'
 gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'font-awesome-rails', '~> 4.4.0.0'
 
 group :development do
   gem 'better_errors', '~> 2.1.1'

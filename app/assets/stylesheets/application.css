@@ -13,6 +13,9 @@
  *= require_tree .
  *= require dataTables/extras/dataTables.responsive
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+ *= require font-awesome
+ *= require animate/animate.css
+ *= require style
  *= require_self
  */
 
@@ -45,38 +48,4 @@
 
 .devise-header {
   margin: 5px, 0, 5px, 0;
-}
-
-/* Sticky footer */
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-}
-
-.text-area {
-  max-width: 732.593px;
-  max-height: 200px;
-  margin-right: 0px;
-}
-
-.alert-dismissable {
-  margin: 5px 5px 5px 5px;
-}
-
-.row-config {
-  max-width: 200px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
