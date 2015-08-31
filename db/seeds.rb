@@ -27,7 +27,7 @@ end
     confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     invitation_limit: nil,
-    roles: "admin"
+    role: "admin"
     )
   admin_user.skip_confirmation!
   admin_user.save!
@@ -41,15 +41,15 @@ end
     confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     invitation_limit: nil,
-    roles: true
+    role: "admin"
     )
   super_user.skip_confirmation!
   super_user.save!
 end
 
 users = User.all
-admin_users = User.where(roles: true)
-standard_users = User.where(roles: false)
+admin_users = User.where(role: "admin")
+standard_users = User.where(role: "standard")
 
 
 # Print out seeded data

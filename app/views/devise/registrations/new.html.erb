@@ -29,8 +29,8 @@
   </div>
 
   <div class="field">
-    <%= f.check_box :roles %>
-    <%= f.label :admin? %>
+    <%= f.label :role %>
+    <%= f.select(:role, %w(standard moderator admin), prompt: "assign a role") %>
   </div>
 
   <div class="actions">

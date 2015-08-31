@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_devise_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :roles, :name, :email, :password, :password_confirmation, :profile_image, :remove_profile_image, :profile_image_cache_id) }
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :roles, :name, :email, :password, :password_confirmation, :current_password, :profile_image, :remove_profile_image, :profile_image_cache_id) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit( :role, :name, :email, :password, :password_confirmation, :profile_image, :remove_profile_image, :profile_image_cache_id) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit( :role, :name, :email, :password, :password_confirmation, :current_password, :profile_image, :remove_profile_image, :profile_image_cache_id) }
     devise_parameter_sanitizer.for(:accept_invitation) { |u| u.permit( :name, :password, :password_confirmation, :invitation_token, :profile_image, :remove_profile_image, :profile_image_cache_id) }
   end
 
