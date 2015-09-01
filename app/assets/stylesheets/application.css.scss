@@ -14,38 +14,10 @@
  *= require dataTables/extras/dataTables.responsive
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  *= require font-awesome
- *= require animate/animate.css
- *= require style
  *= require_self
  */
 
-/* Custom Table CSS Styles */
-
-.th-col-span {
-  text-align: center;
-}
-
-/* Custom Login-form CSS Styles */
-
-.panel-heading {
-    padding: 5px 15px;
-}
-
-.panel-footer {
-  padding: 1px 15px;
-  color: #A0A0A0;
-}
-
-.profile-img {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 10px;
-  display: block;
-  -moz-border-radius: 50%;
-  -webkit-border-radius: 50%;
-  border-radius: 50%;
-}
-
-.devise-header {
-  margin: 5px, 0, 5px, 0;
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "style";
+@import "animate/animate.css"
