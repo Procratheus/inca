@@ -1,37 +1,30 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <%= render "partials/head" %>
-</head>
-<body >
-  <!-- Skin configuration box -->
-  <%= render 'partials/skinconfig' %>
-
+  <html>
+    <head>
+      <%= render "partials/head" %>
+    </head>
+  <body >
     <!-- Wrapper-->
     <div id="wrapper" class="<%= params[:controller] %>.<%= params[:action] %>">
 
-        <!-- Navigation -->
-        <%= render 'partials/navigation' %>
+      <!-- Navigation -->
+      <%= render 'partials/navigation' %>
 
-        <!-- Page wraper -->
-        <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+      <!-- Page wraper -->
+      <div id="page-wrapper" class="gray-bg <%= @extra_class %>">
+        <!-- Page wrapper -->
+        <%= render 'partials/topnavbar' %>
+        <!-- Main view  -->
+        <%= yield %>
+        <!-- Footer -->
+        <%= render 'partials/footer' %>
+      </div>
+      <!-- End page wrapper-->
 
-            <!-- Page wrapper -->
-            <%= render 'partials/topnavbar' %>
-
-            <!-- Main view  -->
-            <%= yield %>
-
-            <!-- Footer -->
-            <%= render 'partials/footer' %>
-
-        </div>
-        <!-- End page wrapper-->
-
-        <!-- Right sidebar -->
-        <%= render 'partials/rightsidebar' %>
+      <!-- Right sidebar -->
+      <%= render 'partials/rightsidebar' %>
 
     </div>
     <!-- End wrapper-->
-</body>
+  </body>
 </html>
