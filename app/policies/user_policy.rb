@@ -29,6 +29,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def admin?
-    user.admin?    
+    user.role == "admin"    
   end
 end
