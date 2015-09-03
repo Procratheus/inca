@@ -51,7 +51,7 @@
       <li>
         <% if policy(Publisher.all).index? %>
           <%= nav_link publishers_path do %>
-            <i class="fa fa-bar-chart-o"></i><span class="nav-label">Publishers</span><span class="fa arrow"></span>
+            <i class="glyphicon glyphicon-briefcase"></i><span class="nav-label">Publishers</span><span class="fa arrow"></span>
           <% end %>
         <% end %>
         <ul class="nav nav-second-level collapse">
@@ -61,7 +61,7 @@
       <li>
         <% if policy(Content.all).index? %>
           <%= nav_link contents_path do %>
-            <i class="fa fa-envelope"></i><span class="nav-label">Content</span>
+            <i class="fa fa-book"></i><span class="nav-label">Content</span>
           <% end %>
         <% end %>
         <ul class="nav nav-second-level collapse">
@@ -92,7 +92,7 @@
           <li>
           <a href="#">Second Level Item</a></li>
         </ul>
-      </li> 
+      </li>
     </ul>
   </div>
 </nav>
