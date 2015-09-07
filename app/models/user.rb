@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  # Soft delete implementation using paranoid gem
+  acts_as_paranoid
+
   include ActiveModel::Dirty
 
   # Include default devise modules. Others available are:

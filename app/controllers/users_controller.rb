@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       redirect_to users_path
     else
       flash[:error] = "There was an error deleteing this user. Please try again!"
-      redirect_to @user
+      redirect_to users_path
     end
   end
 

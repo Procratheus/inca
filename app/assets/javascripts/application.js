@@ -20,6 +20,7 @@
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
 //= require peity/jquery.peity.min.js
+//= require sweetalert/sweetalert.min.js
 //= require inspinia.js
 //= require slimscroll/jquery.slimscroll.min.js
 //= require_tree .
@@ -113,3 +114,37 @@ $(document).ready(function(){
   });
 
 });
+
+// $(document).ready(function(){
+//
+//   $("[data-behavior='delete']").on("click", function(e){
+//     e.preventDefault();
+//     var model = $(this).data("type");
+//     swal({
+//       title: "Are you sure you want to delete this " + model + "?",
+//       text: "You will delete this user permanently",
+//       type: "warning",
+//       showCancelButton: true,
+//       confirmButtonColor: "#337ab7",
+//       confirmButtonText: "Delete?",
+//       cancelButtonText: "Cancel?",
+//       closeOnConfirm: false,
+//       closeOnCancel: false
+//       },
+//       function(isConfirm){
+//         if (isConfirm) {
+//           $.ajax({
+//             url: $(this).attr("href")
+//             dataType: "JSON",
+//             method: "DELETE",
+//             success:
+//               swal("Deleted!", "The " + model + " has been deleted.", "success");
+//           })
+//         } else {
+//           swal("Cancelled!", "The " + model + " has not been deleted.", "error");
+//         }
+//       }
+//     );
+//   });
+//
+// });
