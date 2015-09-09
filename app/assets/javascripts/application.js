@@ -115,36 +115,37 @@ $(document).ready(function(){
 
 });
 
-// $(document).ready(function(){
-//
-//   $("[data-behavior='delete']").on("click", function(e){
-//     e.preventDefault();
-//     var model = $(this).data("type");
-//     swal({
-//       title: "Are you sure you want to delete this " + model + "?",
-//       text: "You will delete this user permanently",
-//       type: "warning",
-//       showCancelButton: true,
-//       confirmButtonColor: "#337ab7",
-//       confirmButtonText: "Delete?",
-//       cancelButtonText: "Cancel?",
-//       closeOnConfirm: false,
-//       closeOnCancel: false
-//       },
-//       function(isConfirm){
-//         if (isConfirm) {
-//           $.ajax({
-//             url: $(this).attr("href")
-//             dataType: "JSON",
-//             method: "DELETE",
-//             success:
-//               swal("Deleted!", "The " + model + " has been deleted.", "success");
-//           })
-//         } else {
-//           swal("Cancelled!", "The " + model + " has not been deleted.", "error");
-//         }
-//       }
-//     );
-//   });
-//
-// });
+$(document).ready(function(){
+
+  $("[data-behavior='confirmDelete']").click(function(e){
+    e.preventDefault();
+    var model = $(this).data("type");
+    return swal({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this imaginary file!',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#DD6B55',
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, cancel plx!',
+      closeOnConfirm: false,
+      closeOnCancel: false
+    }, (function(_this) {
+      return function(confirmed) {
+        if (confirmed) {
+          $.ajax({
+            url: $(_this).attr("href"),
+            dataType: "JSON",
+            method: "DELETE",
+            success: function() {
+              return swal("Deleted!", "The " + model + " has been deleted.", "success");
+            }
+          });
+        } else {
+          swal("Cancelled!", "The " + model + " has not been deleted.", "error");
+        }
+      };
+    })(this));
+  });
+
+});

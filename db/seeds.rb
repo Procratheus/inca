@@ -26,7 +26,7 @@ end
     password: Faker::Internet.password(10, 20),
     confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
-    invitation_limit: nil,
+    invitation_limit: 0,
     role: "admin"
     )
   admin_user.skip_confirmation!
@@ -36,11 +36,11 @@ end
 1.times do
   super_user = User.new(
     name: "Admin User",
-    email: "admin@example.com",
+    email: "adminuser@example.com",
     password: "adminuser",
     confirmed_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
     last_sign_in_at: Faker::Time.between(DateTime.now - 2, DateTime.now),
-    invitation_limit: nil,
+    invitation_limit: 100,
     role: "admin"
     )
   super_user.skip_confirmation!
@@ -48,11 +48,11 @@ end
 end
 
 users = User.all
-admin_users = User.where(role: "admin")
-standard_users = User.where(role: "standard")
+admin_users = User.where(role: 2)
+standard_users = User.where(role: 0)
 
 
 # Print out seeded data
 puts "#{users.count} users seeded in development"
 puts "#{admin_users.count} admin users seeded in development"
-puts "#{standard_users.count} seeded users in development"
+puts "#{standard_users.count} standard users seeded in development"

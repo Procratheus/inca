@@ -28,12 +28,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if @user.destroy
-      flash[:success] = "User was successfully deleted"
-      redirect_to users_path
-    else
-      flash[:error] = "There was an error deleteing this user. Please try again!"
-      redirect_to users_path
+    @user.destroy
+    respond_to do |format|
+      format.json { render json: @users  }
     end
   end
 

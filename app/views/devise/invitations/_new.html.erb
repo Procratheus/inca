@@ -1,0 +1,31 @@
+<div class="modal inmodal" id=<%="#userInvitationModal"%> tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content animated fadeIn">
+      <div class="passwordBox">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="ibox-content">
+              <h2 class="font-bold"><%= t "devise.invitations.new.header" %></h2>
+              <p>
+                Enter the e-mail address of the person you wish to invite.
+              </p>
+              <div class="row">
+                <div class="col-lg-12">
+                  <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post}, class: "m-t" do |f| %>
+                    <%= devise_error_messages! %>
+                    <% resource.class.invite_key_fields.each do |field| -%>
+                    <div class="form-group">
+                      <%= f.text_field field, autofocus: true, placeholder: "Enter the email address of the invitee", class: "form-control", required: "" %>
+                    </div>
+                    <% end %>
+                    <%= f.button "Send", class: "btn btn-primary block full-width m-b", data: { disable_with: "<i class='fa fa-spinner'></i>Sending......" } %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
