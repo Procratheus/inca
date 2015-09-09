@@ -16,6 +16,10 @@ class UserPolicy < ApplicationPolicy
     admin?
   end
 
+  def re_activate?
+    admin?
+  end
+
   def destroy?
     admin?
   end
@@ -29,6 +33,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def admin?
-    user.role == "admin"    
+    user.role == "admin"
   end
 end

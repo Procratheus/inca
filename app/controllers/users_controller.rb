@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, except: [:index]
 
   def index
-    @users = User.all
+    @users = User.with_deleted
     authorize @users
   end
 
@@ -27,17 +27,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def re_activate
+    @user.update(deleted_at: nil)
+    respond_to do |format|
+      format.json { render json: @users }
+    end
+  end
+
   def destroy
     @user.destroy
     respond_to do |format|
-      format.json { render json: @users  }
+      format.json { render json: @users }
     end
   end
 
   protected
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.with_deleted.find(params[:id])
     authorize @user
   end
 

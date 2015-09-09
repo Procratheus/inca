@@ -46,28 +46,38 @@
             <%= link_to "#userInvitationModal", data: { toggle: "modal" }, class: "btn btn-primary" do %>
               <i class="glyphicon glyphicon-plus"></i>
               New user
-              <%= render partial: "devise/invitations/new" %>
+              <%= render "devise/invitations/new" %>
             <% end %>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Created at</th>
-                <th>Last Login</th>
-                <th>Confirmed_at</th>
-                <th>Admin?</th>
-                <th colspan="3">Actions</th>
+                <th class="th-col-span">Name</th>
+                <th class="th-col-span">Email</th>
+                <th class="th-col-span">Admin?</th>
+                <th class="th-col-span">Confirmed?</th>
+                <th class="th-col-span">Active?</th>
+                <th colspan="3" class="th-col-span">Actions</th>
               </tr>
             </thead>
             <tbody>
               <% @users.each_with_index do |user, index| %>
                 <tr>
-                  <td><%= user.name %></td>
-                  <td><%= user.email %></td>
-                  <td><%= user.created_at %></td>
-                  <td><%= user.last_sign_in_at %></td>
-                  <td><%= user.confirmed_at %></td>
-                  <td><%= user.role %></td>
+                  <td class="th-col-span"><%= user.name %></td>
+                  <td class="th-col-span"><%= user.email %></td>
+                  <td class="th-col-span"><%= user.role %></td>
+                  <td class="th-col-span">
+                    <% if user.confirmed? %>
+                      <span class="label label-success">confirmed</span>
+                    <% else %>
+                      <span class="label label-warning">unconfirmed</span>
+                    <% end %>
+                  </td>
+                  <td class="th-col-span">
+                    <% if user.deleted_at == nil %>
+                      <span class="label label-primary">Active</span>
+                    <% else %>
+                      <span class="label label-warning">Archived</span>
+                    <% end %>
+                  </td>
                   <td class="th-col-span">
                     <%= link_to "#userShowModal_#{index}", data: { toggle: "modal" } do %>
                       <i class="glyphicon glyphicon-user"></i>
@@ -81,8 +91,14 @@
                     <% end %>
                   </td>
                   <td class="th-col-span">
-                    <%= link_to user_path(user), data: { behavior: "confirmDelete", type: "#{user.class}" } do %>
-                      <i class="glyphicon glyphicon-remove"></i>
+                    <% if user.deleted_at != nil %>
+                      <%= link_to re_activate_user_path(user), data: { behavior: "confirmRestore", type: "#{user.class}" } do %>
+                        <i class="glyphicon glyphicon-ok"></i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to user_path(user), data: { behavior: "confirmDelete", type: "#{user.class}" } do %>
+                        <i class="glyphicon glyphicon-remove"></i>
+                      <% end %>
                     <% end %>
                   </td>
                 </tr>

@@ -12,4 +12,8 @@ module ApplicationHelper
    @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def date_output(time)
+    Date.parse(time.to_s)
+  end
+
 end

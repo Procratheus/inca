@@ -40,7 +40,6 @@ $(document).ready(function(){
       null,
       null,
       null,
-      null,
       { orderable: false, searchable: false },
       { orderable: false, searchable: false },
       { orderable: false, searchable: false }
@@ -122,12 +121,12 @@ $(document).ready(function(){
     var model = $(this).data("type");
     return swal({
       title: 'Are you sure?',
-      text: 'You will not be able to recover this imaginary file!',
+      text: 'The ' + model + ' will be deleted',
       type: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#DD6B55',
-      confirmButtonText: 'Yes, delete it!',
-      cancelButtonText: 'No, cancel plx!',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
       closeOnConfirm: false,
       closeOnCancel: false
     }, (function(_this) {
@@ -143,6 +142,37 @@ $(document).ready(function(){
           });
         } else {
           swal("Cancelled!", "The " + model + " has not been deleted.", "error");
+        }
+      };
+    })(this));
+  });
+
+  $("[data-behavior='confirmRestore']").click(function(e){
+    e.preventDefault();
+    var model = $(this).data("type");
+    return swal({
+      title: 'Are you sure?',
+      text: 'The ' + model + ' will be restored',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'rgb(174, 222, 244)',
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No',
+      closeOnConfirm: false,
+      closeOnCancel: false
+    }, (function(_this) {
+      return function(confirmed) {
+        if (confirmed) {
+          $.ajax({
+            url: $(_this).attr("href"),
+            dataType: "JSON",
+            method: "PUT",
+            success: function() {
+              return swal("Restored!", "The " + model + " has been restored.", "success");
+            }
+          });
+        } else {
+          swal("Cancelled!", "The " + model + " has not been restored.", "error");
         }
       };
     })(this));
