@@ -50,49 +50,49 @@
             <% end %>
             <thead>
               <tr>
-                <th class="th-col-span">Name</th>
-                <th class="th-col-span">Email</th>
-                <th class="th-col-span">Admin?</th>
-                <th class="th-col-span">Confirmed?</th>
-                <th class="th-col-span">Active?</th>
-                <th colspan="3" class="th-col-span">Actions</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Admin?</th>
+                <th>Confirmed?</th>
+                <th>Active?</th>
+                <th colspan="3">Actions</th>
               </tr>
             </thead>
             <tbody>
               <% @users.each_with_index do |user, index| %>
                 <tr>
-                  <td class="th-col-span"><%= user.name %></td>
-                  <td class="th-col-span"><%= user.email %></td>
-                  <td class="th-col-span"><%= user.role %></td>
-                  <td class="th-col-span">
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.role %></td>
+                  <td>
                     <% if user.confirmed? %>
                       <span class="label label-success">confirmed</span>
                     <% else %>
                       <span class="label label-warning">unconfirmed</span>
                     <% end %>
                   </td>
-                  <td class="th-col-span">
+                  <td>
                     <% if user.deleted_at == nil %>
-                      <span class="label label-primary">Active</span>
+                      <span class="label label-primary active">Active</span>
                     <% else %>
-                      <span class="label label-warning">Archived</span>
+                      <span class="label label-warning active">Archived</span>
                     <% end %>
                   </td>
-                  <td class="th-col-span">
+                  <td>
                     <%= link_to "#userShowModal_#{index}", data: { toggle: "modal" } do %>
                       <i class="glyphicon glyphicon-user"></i>
                       <%= render partial: "show", locals: { user: user, index: index } %>
                     <% end %>
                   </td>
-                  <td class="th-col-span">
+                  <td>
                     <%= link_to "#userEditModal_#{index}", data: { toggle: "modal" } do %>
                       <i class="glyphicon glyphicon-pencil"></i>
                       <%= render partial: "edit", locals: { user: user, index: index } %>
                     <% end %>
                   </td>
-                  <td class="th-col-span">
+                  <td>
                     <% if user.deleted_at != nil %>
-                      <%= link_to re_activate_user_path(user), data: { behavior: "confirmRestore", type: "#{user.class}" } do %>
+                      <%= link_to re_activate_user_path(user), data: { behavior: "confirmRestore", type: "#{user.class}" }, method: :put do %>
                         <i class="glyphicon glyphicon-ok"></i>
                       <% end %>
                     <% else %>

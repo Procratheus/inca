@@ -49,11 +49,11 @@
             <% end %>
             <thead>
               <tr>
-                <th class="row-config">Name</th>
-                <th class="row-config">Address</th>
-                <th class="row-config">Contract signed</th>
-                <th class="row-config">Contract End</th>
-                <th class="th-col-span" colspan="3">Actions</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Contract signed</th>
+                <th>Contract End</th>
+                <th colspan="3">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -63,21 +63,21 @@
                   <td><%= publisher.address %></td>
                   <td><%= publisher.contract_start_date %></td>
                   <td><%= publisher.contract_end_date %></td>
-                  <td class="th-col-span">
+                  <td>
                     <% if policy(publisher).show? %>
                       <%= link_to publisher do %>
                         <i class="glyphicon glyphicon-briefcase"></i>
                       <% end %>
                     <% end %>
                   </td>
-                  <td class="th-col-span">
+                  <td>
                     <% if policy(publisher).edit? %>
                       <%= link_to edit_publisher_path(publisher) do %>
                         <i class="glyphicon glyphicon-pencil"></i>
                       <% end %>
                     <% end %>
                   </td>
-                  <td class="th-col-span">
+                  <td>
                     <% if policy(publisher).destroy? %>
                       <%= link_to publisher_path(publisher), method: :delete, data: { confirm: "Are you sure?" } do %>
                         <i class="glyphicon glyphicon-remove"></i>

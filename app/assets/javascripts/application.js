@@ -1,12 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or any plugin's vendor/assets/javascripts directory can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
@@ -114,68 +105,81 @@ $(document).ready(function(){
 
 });
 
-$(document).ready(function(){
+// Custom delete and restore sweet alert
 
-  $("[data-behavior='confirmDelete']").click(function(e){
-    e.preventDefault();
-    var model = $(this).data("type");
-    return swal({
-      title: 'Are you sure?',
-      text: 'The ' + model + ' will be deleted',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#DD6B55',
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No',
-      closeOnConfirm: false,
-      closeOnCancel: false
-    }, (function(_this) {
-      return function(confirmed) {
-        if (confirmed) {
-          $.ajax({
-            url: $(_this).attr("href"),
-            dataType: "JSON",
-            method: "DELETE",
-            success: function() {
-              return swal("Deleted!", "The " + model + " has been deleted.", "success");
-            }
-          });
-        } else {
-          swal("Cancelled!", "The " + model + " has not been deleted.", "error");
-        }
-      };
-    })(this));
+$(document).ready(function() {
+  $('#user_table, #content_table, #publisher_table').on( 'draw.dt', function () {
+    $("td, th").addClass("th-col-span");
+    $("[data-behavior='confirmDelete']").click(function(e){
+      e.preventDefault();
+      var model = $(this).data("type");
+      return swal({
+        title: 'Are you sure?',
+        text: 'The ' + model + ' will be deleted',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#DD6B55',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        closeOnConfirm: false,
+        closeOnCancel: false
+      }, (function(_this) {
+        return function(confirmed) {
+          if (confirmed) {
+            $.ajax({
+              url: $(_this).attr("href"),
+              dataType: "JSON",
+              method: "DELETE",
+              success: function() {
+                swal("Restored!", "The " + model + " has been restored.", "success");
+                if ($(_this).closest("tr").find(".active").hasClass("label-warning")) {
+                  $(_this).closest("tr").find(".active").removeClass("label-warning").addClass("label-primary").html("active");
+                } else {
+                  $(_this).closest("tr").find(".active").removeClass("label-primary").addClass("label-warning").html("archived");
+                }
+              }
+            });
+          } else {
+            swal("Cancelled!", "The " + model + " has not been deleted.", "error");
+          }
+        };
+      })(this));
+    });
+
+    $("[data-behavior='confirmRestore']").click(function(e){
+      e.preventDefault();
+      var model = $(this).data("type");
+      return swal({
+        title: 'Are you sure?',
+        text: 'The ' + model + ' will be restored',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: 'rgb(174, 222, 244)',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+        closeOnConfirm: false,
+        closeOnCancel: false
+      }, (function(_this) {
+        return function(confirmed) {
+          if (confirmed) {
+            $.ajax({
+              url: $(_this).attr("href"),
+              dataType: "JSON",
+              method: "PUT",
+              success: function() {
+                swal("Restored!", "The " + model + " has been restored.", "success");
+                if ($(_this).closest("tr").find(".active").hasClass("label-warning")) {
+                  $(_this).closest("tr").find(".active").removeClass("label-warning").addClass("label-primary").html("active");
+                } else {
+                  $(_this).closest("tr").find(".active").removeClass("label-primary").addClass("label-warning").html("archived");
+                }
+              }
+            });
+          } else {
+            swal("Cancelled!", "The " + model + " has not been restored.", "error");
+          }
+        };
+      })(this));
+    });
   });
-
-  $("[data-behavior='confirmRestore']").click(function(e){
-    e.preventDefault();
-    var model = $(this).data("type");
-    return swal({
-      title: 'Are you sure?',
-      text: 'The ' + model + ' will be restored',
-      type: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: 'rgb(174, 222, 244)',
-      confirmButtonText: 'Yes',
-      cancelButtonText: 'No',
-      closeOnConfirm: false,
-      closeOnCancel: false
-    }, (function(_this) {
-      return function(confirmed) {
-        if (confirmed) {
-          $.ajax({
-            url: $(_this).attr("href"),
-            dataType: "JSON",
-            method: "PUT",
-            success: function() {
-              return swal("Restored!", "The " + model + " has been restored.", "success");
-            }
-          });
-        } else {
-          swal("Cancelled!", "The " + model + " has not been restored.", "error");
-        }
-      };
-    })(this));
-  });
-
 });
